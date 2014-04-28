@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("КПК-Переводчик")]
 [assembly: AssemblyDescription("Программа предназначена для редактирования файлов ресурсов с целью перевода их на другой язык и упрощения интеграции перевода в готовые проекты на C#.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("ЗАО «НПО «СПАРК»")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("КПК-Переводчик")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
