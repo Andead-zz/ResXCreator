@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
-namespace KPK_Translate
+namespace ResXCreator
 {
     /// <summary>
     ///     Форма редактирования *resx-файла

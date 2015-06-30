@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace KPK_Translate
+namespace ResXCreator
 {
     public partial class MainForm : Form
     {
@@ -61,11 +61,11 @@ namespace KPK_Translate
             filesTreeView.Nodes.Add(
                 new TreeNode("Рабочий стол") {Tag = desktopPath});
 
-            // Заполняем информацию о папках диска C:
-            filesTreeView.Nodes.AddRange(new[]
+            // Заполняем информацию о папках логических дисков
+            foreach (var drive in Environment.GetLogicalDrives())
             {
-                new TreeNode(@"C:\") {Tag = @"C:\"}, new TreeNode(@"D:\") {Tag = @"D:\"}
-            });
+                filesTreeView.Nodes.Add(new TreeNode(drive) {Tag = drive});
+            }
 
             new Thread(() =>
             {

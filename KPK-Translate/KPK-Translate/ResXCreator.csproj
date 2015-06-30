@@ -7,8 +7,8 @@
     <ProjectGuid>{AD25C5DD-8D22-4F48-8493-6EBC42C67F95}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KPK_Translate</RootNamespace>
-    <AssemblyName>KPK-Translate</AssemblyName>
+    <RootNamespace>ResXCreator</RootNamespace>
+    <AssemblyName>ResXCreator</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -80,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LanguageSelect.resx">
       <DependentUpon>LanguageSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.en.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

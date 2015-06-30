@@ -1,4 +1,4 @@
-﻿namespace KPK_Translate
+﻿namespace ResXCreator
 {
     partial class LanguageSelect
     {

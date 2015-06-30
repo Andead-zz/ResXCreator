@@ -1,4 +1,4 @@
-﻿namespace KPK_Translate
+﻿namespace ResXCreator
 {
     partial class MainForm
     {
@@ -81,13 +81,13 @@
             // 
             // saveToolStripMenuItem
             // 
-            this.saveToolStripMenuItem.Image = global::KPK_Translate.Properties.Resources.PrintEntireDocument;
+            this.saveToolStripMenuItem.Image = global::ResXCreator.Properties.Resources.PrintEntireDocument;
             resources.ApplyResources(this.saveToolStripMenuItem, "saveToolStripMenuItem");
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             // 
             // openToolStripMenuItem
             // 
-            this.openToolStripMenuItem.Image = global::KPK_Translate.Properties.Resources.pencil_32;
+            this.openToolStripMenuItem.Image = global::ResXCreator.Properties.Resources.pencil_32;
             resources.ApplyResources(this.openToolStripMenuItem, "openToolStripMenuItem");
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             // 
@@ -111,7 +111,7 @@
             // 
             // обновитьToolStripMenuItem
             // 
-            this.обновитьToolStripMenuItem.Image = global::KPK_Translate.Properties.Resources._112_RefreshArrow_Blue_16x16_72;
+            this.обновитьToolStripMenuItem.Image = global::ResXCreator.Properties.Resources._112_RefreshArrow_Blue_16x16_72;
             this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
             resources.ApplyResources(this.обновитьToolStripMenuItem, "обновитьToolStripMenuItem");
             this.обновитьToolStripMenuItem.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
@@ -175,7 +175,7 @@
             // createCopyButton
             // 
             resources.ApplyResources(this.createCopyButton, "createCopyButton");
-            this.createCopyButton.Image = global::KPK_Translate.Properties.Resources.PrintEntireDocument;
+            this.createCopyButton.Image = global::ResXCreator.Properties.Resources.PrintEntireDocument;
             this.createCopyButton.Name = "createCopyButton";
             this.createCopyButton.UseVisualStyleBackColor = true;
             this.createCopyButton.Click += new System.EventHandler(this.createCopyButton_Click);
@@ -183,7 +183,7 @@
             // editButton
             // 
             resources.ApplyResources(this.editButton, "editButton");
-            this.editButton.Image = global::KPK_Translate.Properties.Resources.pencil_32;
+            this.editButton.Image = global::ResXCreator.Properties.Resources.pencil_32;
             this.editButton.Name = "editButton";
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);

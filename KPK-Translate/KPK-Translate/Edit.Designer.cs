@@ -1,4 +1,4 @@
-﻿namespace KPK_Translate
+﻿namespace ResXCreator
 {
     internal partial class Edit
     {
@@ -76,7 +76,7 @@
             // saveChangesButton
             // 
             this.saveChangesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.saveChangesButton.Image = global::KPK_Translate.Properties.Resources.saveHS;
+            this.saveChangesButton.Image = global::ResXCreator.Properties.Resources.saveHS;
             this.saveChangesButton.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.saveChangesButton.Location = new System.Drawing.Point(400, 350);
             this.saveChangesButton.Name = "saveChangesButton";

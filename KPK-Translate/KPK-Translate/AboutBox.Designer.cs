@@ -1,4 +1,4 @@
-﻿namespace KPK_Translate
+﻿namespace ResXCreator
 {
     partial class AboutBox
     {
@@ -84,7 +84,7 @@
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(271, 17);
             this.labelProductName.TabIndex = 19;
-            this.labelProductName.Text = "КПК-Переводчик";
+            this.labelProductName.Text = "ResXCreator";
             this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelVersion
@@ -108,7 +108,6 @@
             this.labelCompanyName.Name = "labelCompanyName";
             this.labelCompanyName.Size = new System.Drawing.Size(271, 17);
             this.labelCompanyName.TabIndex = 22;
-            this.labelCompanyName.Text = "";
             this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBoxDescription

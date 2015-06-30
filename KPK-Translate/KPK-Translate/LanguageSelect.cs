@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace KPK_Translate
+namespace ResXCreator
 {
     public partial class LanguageSelect : Form
     {

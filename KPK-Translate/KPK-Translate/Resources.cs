@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 
-namespace KPK_Translate
+namespace ResXCreator
 {
     /// <summary>
     ///     Ресурсы

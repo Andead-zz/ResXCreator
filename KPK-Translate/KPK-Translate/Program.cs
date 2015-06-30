@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace KPK_Translate
+namespace ResXCreator
 {
     internal static class Program
     {

@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace KPK_Translate
+namespace ResXCreator
 {
     partial class AboutBox : Form
     {
