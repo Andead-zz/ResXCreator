@@ -1,4 +1,4 @@
-KPK-Translate
+ResXCreator
 =============
 
-Перевод ресурсов без Visual Studio
+Создатель файлов ResX для проектов .NET
