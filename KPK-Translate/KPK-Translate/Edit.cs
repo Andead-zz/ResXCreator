@@ -12,6 +12,11 @@ namespace KPK_Translate
     {
         private string _filename;
 
+        public Edit()
+        {
+            InitializeComponent();
+        }
+
         public string Filename
         {
             get { return _filename; }
@@ -34,11 +39,6 @@ namespace KPK_Translate
         private void Reload()
         {
             editDataGridView.DataSource = Resources.ExtractTranslatableResources(Filename);
-        }
-
-        public Edit()
-        {
-            InitializeComponent();
         }
 
         private void saveChangesButton_Click(object sender, EventArgs e)

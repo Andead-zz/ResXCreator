@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,7 +21,9 @@ namespace KPK_Translate
 
             foreach (var cultureInfo in 
                 CultureInfo.GetCultures(CultureTypes.InstalledWin32Cultures).Where(
-                    c => c.TwoLetterISOLanguageName.ToLowerInvariant() != "en" && c.TwoLetterISOLanguageName.ToLowerInvariant() != "es"))
+                    c =>
+                        c.TwoLetterISOLanguageName.ToLowerInvariant() != "en" &&
+                        c.TwoLetterISOLanguageName.ToLowerInvariant() != "es"))
             {
                 languagesComboBox.Items.Add(cultureInfo);
             }

@@ -13,6 +13,24 @@ namespace KPK_Translate
             InitializeComponent();
         }
 
+        private bool EnableEditAndCreateCopy
+        {
+            set { editButton.Enabled = createCopyButton.Enabled = value; }
+        }
+
+        /// <summary>
+        ///     Выбранный файл в дереве
+        /// </summary>
+        private FileInfo SelectedFile
+        {
+            get
+            {
+                return File.Exists((string) filesTreeView.SelectedNode.Tag) == false
+                    ? null
+                    : new FileInfo((string) filesTreeView.SelectedNode.Tag);
+            }
+        }
+
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new AboutBox().ShowDialog(this);
@@ -38,15 +56,15 @@ namespace KPK_Translate
 
             // Добавляем рабочий стол и мои документы
             var myDocsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            filesTreeView.Nodes.Add(new TreeNode("Мои документы") { Tag = myDocsPath });
+            filesTreeView.Nodes.Add(new TreeNode("Мои документы") {Tag = myDocsPath});
             var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             filesTreeView.Nodes.Add(
-                new TreeNode("Рабочий стол") { Tag = desktopPath });
+                new TreeNode("Рабочий стол") {Tag = desktopPath});
 
             // Заполняем информацию о папках диска C:
             filesTreeView.Nodes.AddRange(new[]
             {
-                new TreeNode(@"C:\") { Tag = @"C:\" }, new TreeNode(@"D:\") { Tag = @"D:\" },
+                new TreeNode(@"C:\") {Tag = @"C:\"}, new TreeNode(@"D:\") {Tag = @"D:\"}
             });
 
             new Thread(() =>
@@ -74,10 +92,15 @@ namespace KPK_Translate
         {
             if (parentNode.TreeView.InvokeRequired)
             {
-                return (TreeNode)parentNode.TreeView.Invoke(new Func<TreeNode>(() => AddNode(parentNode, key, text)));
+                return (TreeNode) parentNode.TreeView.Invoke(new Func<TreeNode>(() => AddNode(parentNode, key, text)));
             }
 
-            var node = new TreeNode(text) { Tag = key, ImageIndex = isCatalog ? 0 : 2, SelectedImageIndex = isCatalog ? 0 : 2 };
+            var node = new TreeNode(text)
+            {
+                Tag = key,
+                ImageIndex = isCatalog ? 0 : 2,
+                SelectedImageIndex = isCatalog ? 0 : 2
+            };
             parentNode.Nodes.Add(node);
 
             return node;
@@ -97,7 +120,7 @@ namespace KPK_Translate
         private static void FetchSubdirectories(TreeNode parentNode)
         {
             parentNode.Nodes.Clear();
-            var directory = new DirectoryInfo((string)parentNode.Tag);
+            var directory = new DirectoryInfo((string) parentNode.Tag);
             try
             {
                 foreach (var subDirectory in directory.GetDirectories())
@@ -122,7 +145,6 @@ namespace KPK_Translate
                 {
                     AddNode(parentNode, file.FullName, file.Name);
                 }
-                
             }
             catch
             {
@@ -137,14 +159,9 @@ namespace KPK_Translate
             e.Node.SelectedImageIndex = e.Node.ImageIndex = 1;
         }
 
-        private bool EnableEditAndCreateCopy
-        {
-            set { editButton.Enabled = createCopyButton.Enabled = value; }
-        }
-
         private void filesTreeView_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            if (File.Exists((string)e.Node.Tag))
+            if (File.Exists((string) e.Node.Tag))
             {
                 EnableEditAndCreateCopy = true;
                 ReloadPreview();
@@ -175,19 +192,6 @@ namespace KPK_Translate
             RefreshFilesTree();
         }
 
-        /// <summary>
-        ///     Выбранный файл в дереве
-        /// </summary>
-        private FileInfo SelectedFile
-        {
-            get
-            {
-                return File.Exists((string)filesTreeView.SelectedNode.Tag) == false
-                    ? null
-                    : new FileInfo((string)filesTreeView.SelectedNode.Tag);
-            }
-        }
-
         private void createCopyButton_Click(object sender, EventArgs e)
         {
             var selectedCulture = new LanguageSelect().ShowDialog(this);
@@ -216,7 +220,7 @@ namespace KPK_Translate
 
             filesTreeView.SelectedNode.Parent.Nodes.Add(new TreeNode(newShortName) {Tag = newFileName});
 
-            var editForm = new Edit { Filename = newFileName };
+            var editForm = new Edit {Filename = newFileName};
             editForm.DataSaved += (o, args) => ReloadPreview();
             editForm.Show();
         }
@@ -228,7 +232,7 @@ namespace KPK_Translate
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            var editForm = new Edit { Filename = SelectedFile.FullName };
+            var editForm = new Edit {Filename = SelectedFile.FullName};
             editForm.DataSaved += (o, args) => ReloadPreview();
             editForm.Show();
         }

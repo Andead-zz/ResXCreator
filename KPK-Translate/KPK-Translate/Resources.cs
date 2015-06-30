@@ -11,15 +11,12 @@ namespace KPK_Translate
     ///     Ресурсы
     /// </summary>
     /// <example>
-    ///     
     ///     1 Способ - создание файла локализации (Resources.en.resx) вручную
     ///     var resourceList = Resources.ExtractTranslatableResources(Path.Combine("C:\\", "Resources.resx"));
     ///     Resources.TranslateResources(list, Path.Combine("C:\\", "Resources.en.resx"));
-    ///     
     ///     2 Способ - автоматическое создание локализации с указанной культурой
-    ///     var resourceList = Resources.ExtractTranslatableResources(Path.Combine("C:\\", "Resources.resx"));    
+    ///     var resourceList = Resources.ExtractTranslatableResources(Path.Combine("C:\\", "Resources.resx"));
     ///     Resources.TranslateResources(resourceList, Path.Combine("C:\\", "Resources.resx"), new CultureInfo("en-US"));
-    /// 
     /// </example>
     public static class Resources
     {
@@ -65,8 +62,8 @@ namespace KPK_Translate
 
                     var newRes = new StringResource
                     {
-                        ResourceName = name.Value,              // Имя
-                        Value = value,                  // Значение
+                        ResourceName = name.Value, // Имя
+                        Value = value, // Значение
                         Comment = comment != null ? comment.InnerText : "", // Примечание
                         ID = localizable.Count + 1
                     };
@@ -83,7 +80,8 @@ namespace KPK_Translate
         /// <param name="translatedResources">Переведенные ресурсы</param>
         /// <param name="destonationResxFilePath">Путь к файлу ресурсов</param>
         /// <returns> Вернет true, если все ресурсы были встроены в файл ресурсов </returns>
-        public static OperationResults TranslateResources(List<StringResource> translatedResources, string destonationResxFilePath)
+        public static OperationResults TranslateResources(List<StringResource> translatedResources,
+            string destonationResxFilePath)
         {
             var result = OperationResults.FileNotFound;
             // Находим файл
@@ -109,9 +107,9 @@ namespace KPK_Translate
                 {
                     var type = one.Attributes["type"];
                     var name = one.Attributes["name"];
-                    var mimetype = one.Attributes["mimetype"]; 
+                    var mimetype = one.Attributes["mimetype"];
                     // Если тип не строка(по умолчанию)
-                    if (name == null || type != null || mimetype!= null) continue;
+                    if (name == null || type != null || mimetype != null) continue;
                     // если имя содержит знаки не локализируемых ресурсов
                     if (name.Value.IndexOf(">>", StringComparison.Ordinal) != -1) continue;
 
@@ -127,7 +125,6 @@ namespace KPK_Translate
                     // Если перевод есть, заменяем значение на новое
                     childNode.InnerText = translate.Value;
                     result = OperationResults.TranslateOk;
-
                 }
                 xmlDocument.Save(destonationResxFilePath);
             }
@@ -135,19 +132,22 @@ namespace KPK_Translate
         }
 
         /// <summary>
-        ///     Вставить переведенные ресурсы в файл-копию оригинального файла ресурсов, именованованный с указаной культурой, размещаемую рядом с оригиналом  
+        ///     Вставить переведенные ресурсы в файл-копию оригинального файла ресурсов, именованованный с указаной культурой,
+        ///     размещаемую рядом с оригиналом
         /// </summary>
         /// <param name="translatedResources">Переведенные ресурсы</param>
         /// <param name="originalResxFilePath">Путь к исходному файлу ресурсов</param>
         /// <param name="translateCultureInfo">Культура</param>
         /// <returns></returns>
-        public static OperationResults TranslateResources(List<StringResource> translatedResources, string originalResxFilePath, CultureInfo translateCultureInfo)
+        public static OperationResults TranslateResources(List<StringResource> translatedResources,
+            string originalResxFilePath, CultureInfo translateCultureInfo)
         {
             var fInfo = new FileInfo(originalResxFilePath);
             if (fInfo.DirectoryName != null)
             {
                 var path = Path.Combine(fInfo.DirectoryName,
-                    fInfo.Name.Replace(".resx", "") + "." + translateCultureInfo.TwoLetterISOLanguageName.ToLowerInvariant() + ".resx");
+                    fInfo.Name.Replace(".resx", "") + "." +
+                    translateCultureInfo.TwoLetterISOLanguageName.ToLowerInvariant() + ".resx");
                 using (var stream = new FileStream(fInfo.FullName, FileMode.Open))
                 {
                     var sr = new StreamReader(stream);
@@ -161,70 +161,4 @@ namespace KPK_Translate
             return OperationResults.FileNotFound;
         }
     }
-
-    /// <summary>
-    ///    Ресурс
-    /// </summary>
-    public class StringResource
-    {
-        /// <summary>
-        ///     Имя - идентефикатор
-        /// </summary>
-        public string ResourceName { set; get; }
-
-        /// <summary>
-        ///     Значение
-        /// </summary>
-        public string Value { set; get; }
-       
-        /// <summary>
-        ///     Примечание
-        /// </summary>
-        public string Comment { set; get; }
-
-        /// <summary>
-        ///     Номер ресурса
-        /// </summary>
-        public int ID { set; get; }
-
-        /// <summary>
-        ///     Без параметров
-        /// </summary>
-        public StringResource() { }
-
-        /// <summary>
-        ///     С параметрами
-        /// </summary>
-        /// <param name="name">Имя ресурса</param>
-        /// <param name="value">Значение ресурса</param>
-        public StringResource(string name, string value)
-        {
-            ResourceName = name;
-            Value = value;
-        }
-    }
-
-    /// <summary>
-    ///     Результаты операции
-    /// </summary>
-    public enum OperationResults
-    {
-        /// <summary>
-        ///  Все ресурсы заменены
-        /// </summary>
-        TranslateOk,
-        /// <summary>
-        ///  Некоторые ресурсы не заменены
-        /// </summary>
-        SomeResourceNotTranslated,
-        /// <summary>
-        ///  Ни один ресурс не заменён
-        /// </summary>
-        AllIsNotTranslated,
-        /// <summary>
-        ///   Не был найден файл ресурсов
-        /// </summary>
-        FileNotFound,
-    }
-
 }
